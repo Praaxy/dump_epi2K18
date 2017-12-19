@@ -1,5 +1,5 @@
 #! /bin/bash
-# variables
+##variables
 
 ## script
 
@@ -223,7 +223,7 @@ script_header "MISE À JOUR DES PAQUETS DU SYSTÈME"
 sys_upgrade
 
 script_header "INSTALLATION DE PYTHON3"
-sys_install python3
+sys_install python3 python-pip
 
 script_header "INSTALLATION DE EMACS ET DU SYSTÈME DE HEADERS EPITECH"
 sys_install emacs
@@ -249,11 +249,16 @@ sys_install curl
 
 script_header "SPACE VIM"
 sys_install vim
-read -p "Installer SpaceVim? [O/n]" yn
-case $yn in
-    [Nn]* );;
-    * ) curl -sLf https://spacevim.org/install.sh | bash;;
-esac
+curl -sLf https://spacevim.org/install.sh | bash
+
+script_header "VS CODE"
+
+script_header "DOCKER"
+sys_install docker;
+sys_install python;
+sys_install python-pip;
+sudo pip install docker-compose;
+sudo service docker restart
 
 script_header "INSTALLATION DE GIT, GENERATION DE LA CLE SSH ET UPLOAD SUR SERVEUR EPITECH"
 
