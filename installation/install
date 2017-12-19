@@ -1,5 +1,4 @@
 #! /bin/bash
-OB
 # variables
 
 ## script
@@ -11,7 +10,7 @@ login=$1
 
 ## fake install ?
 
-fake=1
+fake=0
 
 ## colors
 
