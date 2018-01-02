@@ -252,7 +252,7 @@ sys_install vim
 curl -sLf https://spacevim.org/install.sh | bash
 
 script_header "VS CODE"
-
+sys_install visual-studio-code-bin;
 script_header "DOCKER"
 sys_install docker;
 sys_install python;
@@ -276,20 +276,6 @@ handle_error $?
 
 script_header "INSTALLATION ET CONFIGURATION DE ZSH ET OH MY ZSH"
 
-script_header "ZSH" $C_YELLOW
-sys_install zsh
-
-script_header "OH-MY-ZSH" $C_YELLOW
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#no error check here: remote install.sh has a chsh error
-chsh $USER -s /usr/bin/zsh
-handle_error $?
-#All alias only c/p line and change them
-echo "alias blih='blih -u $1'" >> /home/$USER/.zshrc
-echo "alias ns_auth='ns_auth -u $1'" >> /home/$USER/.zshrc
-echo "alias ne='emacs -nw'" >> /home/$USER/.zshrc
-
-source ~/.zshrc
 
 script_header "INSTALLATION DU MAN DE GOOGLE"
 sudo cp $files/google.1 /usr/share/man/man1/google.1
@@ -322,6 +308,20 @@ case $yn in
     * ) sys_install htop;;
 esac
 
+script_header "ZSH" $C_YELLOW
+sys_install zsh
+
+script_header "OH-MY-ZSH" $C_YELLOW
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#no error check here: remote install.sh has a chsh error
+chsh $USER -s /usr/bin/zsh
+handle_error $?
+#All alias only c/p line and change them
+echo "alias blih='blih -u $1'" >> /home/$USER/.zshrc
+echo "alias ns_auth='ns_auth -u $1'" >> /home/$USER/.zshrc
+echo "alias ne='emacs -nw'" >> /home/$USER/.zshrc
+
+source ~/.zshrc
 script_header "VOTRE OS EST PRÊT POUR EPITECH" $C_BWHITE
 
 sudo -k
